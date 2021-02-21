@@ -1,0 +1,17 @@
+Q2:
+Suggest how to use the workflow you have implemented in this assignment to train a network that
+could be used for super-resolution.
+A full answer consists of:
+a description of the corruption function,
+how to properly use the restore_image() function for this task.
+For this context only, you could optionally add additional operations before calling to restore_image()
+
+A2:
+First we have to fit the corruption function to this task- we will need a function that takes a super-resolution image
+and decrease its quality to lower one. We can do this by adding an operation of blurring the image in a similar way to
+the blurring used in the process of building a laplacian pyramid: blurring->subsampling every second pixel in every
+second row->padding with zeros->increase to the original size.
+The network will receive a batch of tuples of images- a super-res image, and a corrupted version of it.
+For every sample will active the corruption function described above on the super-res image and learn the difference
+between the super-res and the lower-res versions.
+After training the model, the function restore_image() will receive a corrupted image and predict the result.

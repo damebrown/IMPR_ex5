@@ -1,0 +1,23 @@
+Q1:
+Describe the effect of increasing the residual blocks on its performance for each task:
+both quantitatively in terms of the plot you got
+and qualitatively in terms of the differences in the image outputs of each model.
+
+A1:
+Denoising task:
+Unlike the Deblurring task, the error of the model we built does not monotonically decrease through the whole five runs
+of the program. in the first 2-3 runs (meaning for depths 1-3) the error decreased, but for hight depths (4-5) the error
+significantly increased. This may accur due to overfitting of the model.
+In terms of the differences in the image outputs of each model,  in accordance to the graph, the first 3 depths' (1-3)
+result increased for each depth, while the other depths (4-5) had a major decrease in the quality of output, which
+approves the graph's indication.
+
+Deblurring task:
+In the deblurring task, the bigger the residual amount got, the smaller the error got, meaning that the model we build
+acted in such a way that it preforms better the more blocks it had.
+With that being said, we can notice that although the error itself is monotonicaly deacrising, the speed in which it
+decreases (meaning the graph's derivative) is monotonically decreasing, meaning the more residual blocks a model has,
+the smaller the impact of another added residual block has on the model.
+In terms of the differences in the image outputs of each model, in accordance to the graph, the first 4 depths' (1-4)
+result increased for each depth, while the changing of the improvment descended each iteration, while the fifth run
+(5 res blocks) didn't always had a significant improvement.
